@@ -21,4 +21,4 @@ https://actix.rs/docs/static-files/
 
 `dotnet new blazorwasm -o aspnetwasm` で Blazor WebAssembly のプロジェクトを作成する。
 
-`dotnet publish -c Release -o ../.` でビルドする。
+`dotnet publish aspnetwasm.csproj -c Release -o .././ -p:IsWebConfigTransformDisabled=true` で発行する。
