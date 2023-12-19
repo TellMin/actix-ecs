@@ -7,7 +7,7 @@ async fn index() -> Result<fs::NamedFile> {
     Ok(fs::NamedFile::open("wwwroot/index.html")?)
 }
 
-#[get("/{filename:.*}")]
+#[get("/{filename}")]
 async fn pages(req: HttpRequest) -> Result<fs::NamedFile> {
     let path: PathBuf = req.match_info().query("filename").parse().unwrap();
     let file_name = path.file_name().unwrap().to_str().unwrap();
