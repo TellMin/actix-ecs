@@ -15,11 +15,9 @@ async fn pages(req: HttpRequest) -> Result<fs::NamedFile> {
     if file_name.contains(".") {
         let root_path = PathBuf::from("wwwroot");
         let file = fs::NamedFile::open(root_path.join(path));
-        let result = match file {
-            Ok(file) => file,
-            Err(_) => fs::NamedFile::open("wwwroot/index.html")?,
-        };
-        return Ok(result);
+        if let Ok(file) = file {
+            return Ok(file);
+        }
     }
     Ok(fs::NamedFile::open("wwwroot/index.html")?)
 }
