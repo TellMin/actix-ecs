@@ -14,4 +14,4 @@ COPY . .
 RUN cargo build --release
 COPY --from=build /app/wwwroot ./wwwroot
 EXPOSE 8080
-CMD ["./target/release/actix-ecs"]
+ENTRYPOINT ["./target/release/actix-ecs"]
